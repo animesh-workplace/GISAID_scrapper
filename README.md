@@ -3,7 +3,7 @@ This tool can be used to download the samples and metadata from GISAID provided 
 
 You also need to download chrome webdriver based on your operating system and place it in the directory.
 
-You alsoneedto make sure that the credentials.txt has your username and password exactly as given in the file.
+You also need to make sure that the credentials.txt has your username and password exactly as given in the file.
 
       - <username>
       - <password>
