@@ -25,7 +25,7 @@ class GisaidCoVScrapper:
     def __init__(self, headless: bool = False):
         options = webdriver.ChromeOptions() 
         prefs = {}
-        path = os.getcwd()
+        path = os.getcwd() + '/output'
         prefs["profile.default_content_settings.popups"] = 0
         prefs["download.default_directory"] = path
         options.add_experimental_option("prefs", prefs)
@@ -114,11 +114,11 @@ class GisaidCoVScrapper:
         inp = self.driver.find_elements_by_tag_name("button")
         inp[2].click()
         print('Downloading...')
-        time.sleep(20)
+        time.sleep(25)
 
         while True:
             print('Waiting for download to complete')
-            file_list = os.listdir('.')
+            file_list = os.listdir('./output')
             for i in file_list:
                 if(i.endswith('.crdownload')):
                     flag = 1

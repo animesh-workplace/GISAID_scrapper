@@ -88,6 +88,9 @@ class GisaidCoVMetadataScrapper:
     def load_epicov(self):
         time.sleep(2)
         self._go_to_seq_browser()
+        self.driver.scopes = [
+        '.*epicov.org/epi3/frontend*'
+        ]
         print('Filtering Samples')
         filtering = ['Whole Genomes only selected', 'High Coverage Selected', 'Low coverage excluded']
         time.sleep(8)
@@ -109,13 +112,11 @@ class GisaidCoVMetadataScrapper:
         print('Capturing metadata request')
         time.sleep(5)
         gisaid_request = self.driver.last_request
-        print(gisaid_request)
         url = str(gisaid_request)
         temp = url.split("27")
         new_url = temp[0] + str(0) + temp[1] + str(samples_count) + temp[2]
-        print(new_url)
         get_request = requests.get(new_url, timeout = 120)
-        json.dump(get_request.json(), open("metadata.json", "w"), indent = 6)
+        json.dump(get_request.json(), open("./output/metadata.json", "w"), indent = 6)
         # awk 'NR>2 {print $0}' metadata.json | head -n -7 | sed '$s/\,//g' | sed 's/"records"://g' > formatted.json
         print("Metadata Saved!!!")
         time.sleep(2)
