@@ -118,6 +118,7 @@ class GisaidCoVMetadataScrapper:
         print(new_url)
         get_request = requests.get(new_url, timeout = 120)
         json.dump(get_request.json(), open("metadata.json", "w"), indent = 6)
+        # awk 'NR>2 {print $0}' metadata.json | head -n -7 | sed '$s/\,//g' | sed 's/"records"://g' > formatted.json
         print("Metadata Saved!!!")
         time.sleep(2)
         self.driver.close()
