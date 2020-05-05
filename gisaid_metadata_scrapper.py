@@ -77,9 +77,7 @@ class GisaidCoVMetadataScrapper:
 
         logging.info('Attempting to submit login credentials')
         print('Attempting to submit login credentials')
-        self.driver.execute_script(
-            "document.getElementsByClassName('form_button_submit')[0].click()"
-        )
+        self.driver.execute_script("document.getElementsByClassName('form_button_submit')[0].click()")
         logging.info('Clicked login credentials submissin button')
         print('Clicked login credentials submissin button')
         logging.info('Waiting for login credentials to load')
@@ -137,10 +135,7 @@ class GisaidCoVMetadataScrapper:
 
     def go_to_next_page(self):
         try:
-            self.driver.find_element_by_xpath(
-                "//*[contains(text(), 'next >')]").click()
+            self.driver.find_element_by_xpath("//*[contains(text(), 'next >')]").click()
         except ElementClickInterceptedException:
-            self.driver.execute_script(
-                "document.getElementById('sys_curtain').remove()")
-            self.driver.find_element_by_xpath(
-                "//*[contains(text(), 'next >')]").click()
+            self.driver.execute_script("document.getElementById('sys_curtain').remove()")
+            self.driver.find_element_by_xpath("//*[contains(text(), 'next >')]").click()
