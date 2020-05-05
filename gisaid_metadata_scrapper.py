@@ -26,7 +26,9 @@ class GisaidCoVMetadataScrapper:
     def __init__(self, headless: bool = False):
         options = webdriver.ChromeOptions() 
         prefs = {}
-        path = os.getcwd()
+        path = os.getcwd() + 'output/'
+        if not os.path.exists('output'):
+            os.makedirs('output')        
         prefs["profile.default_content_settings.popups"] = 0
         prefs["download.default_directory"] = path
         options.add_experimental_option("prefs", prefs)
@@ -78,8 +80,8 @@ class GisaidCoVMetadataScrapper:
         logging.info('Attempting to submit login credentials')
         print('Attempting to submit login credentials')
         self.driver.execute_script("document.getElementsByClassName('form_button_submit')[0].click()")
-        logging.info('Clicked login credentials submissin button')
-        print('Clicked login credentials submissin button')
+        logging.info('Clicked login credentials submission button')
+        print('Clicked login credentials submission button')
         logging.info('Waiting for login credentials to load')
         print('Waiting for login credentials to load')
         WebDriverWait(self.driver, 60).until(cond.staleness_of(login_box))
