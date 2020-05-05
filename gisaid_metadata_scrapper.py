@@ -26,7 +26,10 @@ class GisaidCoVMetadataScrapper:
     def __init__(self, headless: bool = False):
         options = webdriver.ChromeOptions() 
         prefs = {}
-        path = os.getcwd() + 'output/'
+        if os.name == 'nt':
+            path = os.getcwd() + '\\output'
+        else:
+            path = os.getcwd() + '/output'
         if not os.path.exists('output'):
             os.makedirs('output')        
         prefs["profile.default_content_settings.popups"] = 0
