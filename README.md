@@ -9,7 +9,11 @@ You also need to download chrome webdriver based on your operating system and pl
       - python main_scrapper.py
       
 To run in headless mode use the following command:
+
       - python main_scrapper.py -q
+      
+      
 or
+
       - python main_scrapper.py --headless
       
