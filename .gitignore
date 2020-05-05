@@ -5,3 +5,4 @@ credentials.txt
 *.log
 *.sublime-project
 *.sublime-workspace
+chromedriver.exe
