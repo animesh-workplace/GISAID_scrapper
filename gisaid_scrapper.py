@@ -76,9 +76,7 @@ class GisaidCoVScrapper:
 
         logging.info('Attempting to submit login credentials')
         print('Attempting to submit login credentials')
-        self.driver.execute_script(
-            "document.getElementsByClassName('form_button_submit')[0].click()"
-        )
+        self.driver.execute_script("document.getElementsByClassName('form_button_submit')[0].click()")
         logging.info('Clicked login credentials submissin button')
         print('Clicked login credentials submissin button')
         logging.info('Waiting for login credentials to load')
@@ -92,8 +90,7 @@ class GisaidCoVScrapper:
         print('Filtering Samples')
         filtering = ['Whole Genomes only selected', 'High Coverage Selected', 'Low coverage excluded']
         time.sleep(8)
-        parent_form = self.driver.find_elements_by_class_name(
-            "sys-form-fi-cb")
+        parent_form = self.driver.find_elements_by_class_name("sys-form-fi-cb")
         for index,i in enumerate(parent_form):
             inp = i.find_element_by_tag_name("input")
             inp.click()
