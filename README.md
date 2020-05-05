@@ -1,7 +1,11 @@
 # GISAID_scrapper
 This tool can be used to download the samples and metadata from GISAID provided you have an existing account with download privileges.
 
-You also need to download chrome webdriver based on your operating system and place it in the directory.
+You also need to download chrome webdriver based on your operating system and place it in the directory (for Windows).
+
+For Linux, you need to place the chrome webdriver in usr/bin after executing:
+
+      - chmod a+x chromedriver
 
 You also need to make sure that the credentials.txt has your username and password exactly as given in the file.
 
