@@ -1,0 +1,7 @@
+credentials.txt
+/__pycache__
+/virtual_env
+/output
+*.log
+*.sublime-project
+*.sublime-workspace
