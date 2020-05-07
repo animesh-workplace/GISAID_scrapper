@@ -90,34 +90,17 @@ class GisaidCoVScrapper:
     def load_epicov(self):
         time.sleep(2)
         self._go_to_seq_browser()
-        print('Filtering Samples')
-        filtering = ['Whole Genomes only selected', 'High Coverage Selected', 'Low coverage excluded']
-        time.sleep(8)
-        parent_form = self.driver.find_elements_by_class_name("sys-form-fi-cb")
-        for index,i in enumerate(parent_form):
-            inp = i.find_element_by_tag_name("input")
-            inp.click()
-            print(filtering[index])
-            time.sleep(5)
-        samples_count = int(self.driver.find_elements_by_xpath("//*[contains(text(), 'Total:')]")[0].text.split(" ")[1].replace(",", ""))
-        parent_form = self.driver.find_element_by_id("yui-dt0-th-c-liner")
-        inp = parent_form.find_element_by_tag_name("input")
-        inp.click()
-        print('Total Samples Selected:', samples_count)
-        time.sleep(8)
 
-        parent_form = self.driver.find_elements_by_class_name("sys-datatable-info")
-        inp = parent_form[1].find_elements_by_tag_name("button")
-        inp[1].click()
-        time.sleep(5)
-        print('Clicked on Download')
-        parent_form1 = self.driver.find_element_by_tag_name("iframe")
-        self.driver.switch_to.frame(parent_form1)
+        parent_form = self.driver.find_element_by_tag_name("iframe")
+        self.driver.switch_to.frame(parent_form)
         print('Changing Frame')
-        inp = self.driver.find_elements_by_tag_name("button")
-        inp[2].click()
-        print('Downloading...')
-        time.sleep(60)
+        time.sleep(5)
+        parent_form = self.driver.find_elements_by_class_name("downicon")
+        for i in parent_form:
+            i.click()
+            time.sleep(15)
+            print('Downloading...')     
+        time.sleep(10)
         flag = 0
         while True:
             print('Waiting for download to complete')
@@ -138,9 +121,10 @@ class GisaidCoVScrapper:
         self.remove_sys_curtain()
         self.driver.find_element_by_link_text("EpiCoV™").click()
         print('Clicked on EpiCov')
-
         time.sleep(10)
 
         self.remove_sys_curtain()
-        self.driver.find_elements_by_xpath("//*[contains(text(), 'Browse')]")[0].click()
+        parent = self.driver.find_elements_by_class_name("sys-actionbar-action")
+        parent[2].click()
         print('Clicked on Browse')
+        time.sleep(10)
