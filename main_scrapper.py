@@ -1,6 +1,5 @@
 import argparse, sys
 from gisaid_scrapper import GisaidCoVScrapper
-from gisaid_metadata_scrapper import GisaidCoVMetadataScrapper
 
 def str2bool(v):
     if isinstance(v, bool):
@@ -34,11 +33,7 @@ def get_credentials():
 if __name__ == "__main__":
     args = parse_args()
     login, passwd = get_credentials()
-    print("Downloading Metadata!!!!!")
-    metadata_scrapper = GisaidCoVMetadataScrapper(args.headless)
-    metadata_scrapper.login(login, passwd)
-    metadata_scrapper.load_epicov()
-    print("Downloading FASTA!!!!!")
+    print("Downloading All Files from GISAID to run in nextstrain!!!!!")
     scrapper = GisaidCoVScrapper(args.headless)
     scrapper.login(login, passwd)
     scrapper.load_epicov()
